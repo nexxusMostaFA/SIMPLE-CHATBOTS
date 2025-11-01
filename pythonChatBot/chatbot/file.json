@@ -1,0 +1,227 @@
+{
+  "app_help": {
+    "categories": [
+      {
+        "category": "Greetings",
+        "questions": [
+          {
+            "question": "Hi",
+            "answer": "Hello! How can I assist you today with WorkerApp?"
+          },
+          {
+            "question": "Hello",
+            "answer": "Hi there! What can I help you with today?"
+          },
+          {
+            "question": "How are you?",
+            "answer": "I'm just a bot, but I'm here and ready to help! How can I assist you with WorkerApp?"
+          },
+          {
+            "question": "Good morning",
+            "answer": "Good morning! How can I help you today?"
+          },
+          {
+            "question": "Good evening",
+            "answer": "Good evening! What can I assist you with today?"
+          },
+          {
+            "question": "What's up?",
+            "answer": "I'm here to help you with WorkerApp! Let me know what you need assistance with."
+          },
+          {
+            "question": "Thank you",
+            "answer": "You're very welcome! Let me know if there’s anything else I can help with."
+          },
+          {
+            "question": "Thanks",
+            "answer": "No problem! Feel free to ask if you need more help."
+          },
+          {
+            "question": "Bye",
+            "answer": "Goodbye! Have a great day, and come back anytime for more help!"
+          }
+        ]
+      },
+      {
+        "category": "Account & Registration",
+        "questions": [
+          {
+            "question": "How do I create an account as a worker?",
+            "answer": "Click 'Sign Up,' choose 'Worker,' and fill in your details including your profession. Upload any required certifications and verify your email or phone number."
+          },
+          {
+            "question": "How do I sign up as a customer?",
+            "answer": "Click 'Sign Up,' select 'Customer,' enter your personal details, verify your email or phone number, and start booking services."
+          },
+          {
+            "question": "What should I do if I forget my password?",
+            "answer": "Click on 'Forgot Password' on the login page, enter your email, and follow the instructions to reset your password."
+          },
+          {
+            "question": "How do I update my email address?",
+            "answer": "Go to 'Account Settings' and click on 'Edit Email,' then enter your new email and verify it through the confirmation link sent to your new address."
+          },
+          {
+            "question": "Can I change my phone number?",
+            "answer": "Yes, go to 'Account Settings' > 'Edit Phone Number' and follow the verification process for the new number."
+          },
+          {
+            "question": "What do I do if I don’t receive the verification link?",
+            "answer": "Check your spam folder or resend the link from 'Account Settings.' If the issue persists, contact customer support."
+          },
+          {
+            "question": "How do I delete my account?",
+            "answer": "To delete your account, go to 'Account Settings,' scroll down to 'Delete Account,' and follow the instructions. Note that this action is irreversible."
+          },
+          {
+            "question": "Can I switch between customer and worker accounts?",
+            "answer": "No, you need to create separate accounts if you want to be both a worker and a customer."
+          },
+          {
+            "question": "How do I deactivate my account temporarily?",
+            "answer": "Go to 'Account Settings' and select 'Deactivate Account' to temporarily disable your account. You can reactivate it at any time by logging in."
+          },
+          {
+            "question": "Why is my account suspended?",
+            "answer": "Your account may be suspended due to a violation of terms of service or suspicious activity. Contact support for more details."
+          }
+        ]
+      },
+      {
+        "category": "Service Booking",
+        "questions": [
+          {
+            "question": "How do I book a service?",
+            "answer": "Select a service category (e.g., carpentry, electrical), pick a worker, choose a time, and confirm the booking."
+          },
+          {
+            "question": "Can I book multiple services at once?",
+            "answer": "Yes, you can add multiple services to your booking and schedule them as needed."
+          },
+          {
+            "question": "How do I reschedule a booking?",
+            "answer": "Go to 'My Bookings,' select the job you want to reschedule, and choose a new date and time."
+          },
+          {
+            "question": "How can I cancel a booking?",
+            "answer": "You can cancel a booking from 'My Bookings' by selecting the job and clicking 'Cancel.' Cancellation fees may apply."
+          },
+          {
+            "question": "How do I view my upcoming bookings?",
+            "answer": "Go to 'My Bookings' in your profile to see a list of all scheduled tasks."
+          },
+          {
+            "question": "What happens if the worker doesn’t show up?",
+            "answer": "If a worker fails to show up, you can request a refund or reschedule the service by contacting support."
+          },
+          {
+            "question": "Can I request a specific worker?",
+            "answer": "Yes, you can choose a specific worker by browsing their profile and selecting them when booking."
+          },
+          {
+            "question": "How do I contact the worker before the job?",
+            "answer": "Once the booking is confirmed, you can contact the worker through the in-app messaging system."
+          },
+          {
+            "question": "Can I modify the service after booking?",
+            "answer": "Yes, you can modify the scope of work or add services by editing the booking details under 'My Bookings.'"
+          },
+          {
+            "question": "What if the worker requests extra charges?",
+            "answer": "Workers can only request extra charges if additional tasks are added. You will be notified of any extra charges before payment."
+          }
+        ]
+      },
+      {
+        "category": "Payments",
+        "questions": [
+          {
+            "question": "What payment methods are accepted?",
+            "answer": "We accept credit/debit cards, mobile wallets, and cash on delivery (where applicable)."
+          },
+          {
+            "question": "How do I add a payment method?",
+            "answer": "Go to 'Payment Methods' in 'Account Settings' and add your preferred card or wallet details."
+          },
+          {
+            "question": "Is my payment information secure?",
+            "answer": "Yes, your payment information is encrypted and stored securely using industry-standard protocols."
+          },
+          {
+            "question": "How do I request a refund?",
+            "answer": "You can request a refund by going to 'Support' and submitting a refund request for the relevant booking."
+          },
+          {
+            "question": "Can I pay in cash?",
+            "answer": "Yes, cash on delivery is available for certain services and regions."
+          },
+          {
+            "question": "How long does it take to process a refund?",
+            "answer": "Refunds are processed within 3-5 business days after approval."
+          },
+          {
+            "question": "What should I do if my payment fails?",
+            "answer": "Ensure that your payment details are correct and that you have sufficient funds. You can also try a different payment method."
+          },
+          {
+            "question": "How can I view my payment history?",
+            "answer": "Go to 'Payment History' in your account to view all past payments and transactions."
+          },
+          {
+            "question": "Can I split payments between two methods?",
+            "answer": "Currently, payments cannot be split between multiple methods."
+          },
+          {
+            "question": "Why was my payment declined?",
+            "answer": "Payments can be declined due to insufficient funds, incorrect card details, or restrictions from your bank. Contact your bank for further information."
+          }
+        ]
+      },
+      {
+        "category": "Worker Profiles & Earnings",
+        "questions": [
+          {
+            "question": "How do I update my worker profile?",
+            "answer": "Go to 'Profile' and click 'Edit' to update your personal and professional details."
+          },
+          {
+            "question": "How do I add a new service to my profile?",
+            "answer": "Go to 'My Services' under your profile and click 'Add Service,' then select the service type and set your rate."
+          },
+          {
+            "question": "How do I set my availability?",
+            "answer": "Go to 'Availability' in your profile settings and set the days and times you are available to work."
+          },
+          {
+            "question": "How do I manage my service rates?",
+            "answer": "You can update your service rates by going to 'My Services' and editing the pricing for each service."
+          },
+          {
+            "question": "How do I track my earnings?",
+            "answer": "Go to 'Earnings' in your dashboard to see a breakdown of your earnings for the week or month."
+          },
+          {
+            "question": "When will I receive my payment?",
+            "answer": "Payments are processed 2-3 business days after the job is marked as completed."
+          },
+          {
+            "question": "How do I withdraw my earnings?",
+            "answer": "You can withdraw your earnings to your linked bank account or mobile wallet by going to 'Withdraw Earnings' in your dashboard."
+          },
+          {
+            "question": "Can I receive tips from customers?",
+            "answer": "Yes, customers can tip you after the job is completed. Tips are included in your earnings."
+          },
+          {
+            "question": "How do I view customer ratings?",
+            "answer": "You can view customer ratings and reviews by going to your profile and clicking on 'Reviews.'"
+          },
+          {
+            "question": "Why was my account rating lowered?",
+            "answer": "Account ratings can be impacted by customer feedback. Ensure timely service and quality work to maintain a high rating."
+          }
+        ]
+      }
+    ]
+  }
+}

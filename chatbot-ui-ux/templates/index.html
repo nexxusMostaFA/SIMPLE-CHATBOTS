@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Chat Application</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --user-msg-color: #4f46e5;
+            --response-msg-color: #f3f4f6;
+        }
+
+        body {
+            background-color: #f8fafc;
+        }
+
+        .chat-container {
+            height: 500px;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .chat-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-container::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 3px;
+        }
+
+        .message {
+            margin: 16px 0;
+            padding: 12px 16px;
+            border-radius: 16px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease-in-out;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: var(--user-msg-color);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+        .response-message {
+            background-color: var(--response-msg-color);
+            color: #1f2937;
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+        }
+
+        .typing-indicator {
+            padding: 12px 16px;
+            background-color: var(--response-msg-color);
+            border-radius: 16px;
+            width: fit-content;
+            margin: 16px 0;
+            display: none;
+            animation: pulse 1.5s infinite;
+        }
+
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: #6b7280;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: bounce 1.5s infinite;
+        }
+
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border-radius: 16px;
+        }
+
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            border-radius: 16px 16px 0 0 !important;
+            padding: 20px;
+        }
+
+        .card-footer {
+            background-color: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 20px;
+            border-radius: 0 0 16px 16px !important;
+        }
+
+        .form-control {
+            border: 2px solid #e5e7eb;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--user-msg-color);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(1px);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.4; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .timestamp {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        #charCount {
+            position: absolute;
+            right: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="m-0 d-flex align-items-center">
+                            <i class="fas fa-comments me-2 text-primary"></i>
+                            Chat Application
+                        </h3>
+                    </div>
+                    <div class="card-body chat-container" id="chatContainer">
+                        <div class="typing-indicator" id="typingIndicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="messageInput" 
+                                   placeholder="Type your message..." maxlength="500">
+                            <span id="charCount">0/500</span>
+                            <button class="btn btn-primary" onclick="sendMessage()">
+                                <i class="fas fa-paper-plane me-2"></i>Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getTimestamp() {
+            return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function addMessage(message, isUser) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'response-message'}`;
+            
+            const messageContent = document.createElement('div');
+            messageContent.textContent = message;
+            
+            const timestamp = document.createElement('div');
+            timestamp.className = 'timestamp';
+            timestamp.textContent = getTimestamp();
+            
+            messageDiv.appendChild(messageContent);
+            messageDiv.appendChild(timestamp);
+            
+            // Insert before typing indicator
+            const typingIndicator = document.getElementById('typingIndicator');
+            chatContainer.insertBefore(messageDiv, typingIndicator);
+            
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'block';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            typingIndicator.style.display = 'none';
+        }
+
+        async function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            
+            if (message) {
+                addMessage(message, true);
+                messageInput.value = '';
+                updateCharCount();
+                
+                showTypingIndicator();
+                
+                try {
+                    const response = await fetch('/api', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ message })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    // Simulate network delay for demo purposes
+                    setTimeout(() => {
+                        hideTypingIndicator();
+                        addMessage(data.response, false);
+                    }, 1000);
+                } catch (error) {
+                    setTimeout(() => {
+                        hideTypingIndicator();
+                        addMessage('Error sending message. Please try again.', false);
+                    }, 1000);
+                }
+            }
+        }
+
+        function updateCharCount() {
+            const messageInput = document.getElementById('messageInput');
+            const charCount = document.getElementById('charCount');
+            charCount.textContent = `${messageInput.value.length}/500`;
+        }
+
+        // Event Listeners
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        document.getElementById('messageInput').addEventListener('input', updateCharCount);
+
+        // Initialize character count
+        updateCharCount();
+    </script>
+</body>
+</html>
